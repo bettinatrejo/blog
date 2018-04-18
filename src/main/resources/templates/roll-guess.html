@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/header :: header('Roll dice result')"></head>
+<body>
+
+<h2>You guessed: <span th:text="${n}"></span></h2>
+<h2>Correct number is: <span th:text="${correct}"></span></h2>
+<h2 th:if="${answer}">Correct!</h2>
+<h2 th:if="${!answer}">Sorry, incorrect!</h2>
+
+
+
+
+
+</body>
+</html>
