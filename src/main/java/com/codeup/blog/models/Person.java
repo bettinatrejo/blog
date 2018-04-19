@@ -8,7 +8,7 @@ public class Person {
 
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
     @Column(nullable = false)
     private int age;
@@ -30,7 +30,7 @@ public class Person {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

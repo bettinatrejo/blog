@@ -13,13 +13,13 @@ public class Dog {
 //    3) name
 //    4) state_residing
 
-@Id @GeneratedValue
-    private long id;
+@Id @GeneratedValue ()
+    private int id;
 
 @Column (nullable = false)
     private int age;
 
-@Column (nullable = false, length = 150)
+@Column (nullable = false, length = 255)
     private String name;
 
 
@@ -36,7 +36,7 @@ public class Dog {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
