@@ -20,6 +20,23 @@ public class Person {
     @Column (nullable = false, length = 100)
     private String state_residing;
 
+
+//    @Id
+//    @GeneratedValue
+//    @Column(columnDefinition = "INT(11) UNSIGNED")
+//    private long id;
+//
+//    @Column(nullable=false)
+//    private int age;
+//
+//    @Column(nullable=false)
+//    private String name;
+//
+//    @Column(name="reside_state", nullable=false, columnDefinition="char(2)")
+//    private String resideState;
+
+
+
     public Person(int age, String name, String state_residing) {
         this.age = age;
         this.name = name;
