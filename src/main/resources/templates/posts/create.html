@@ -8,11 +8,11 @@
 <main class="container">
 
     <form th:action="@{/posts/create}" th:method="post" th:object="${newPost}">
-        Title:
-        <input th:field="*{title}" />
+        <h4>Title:</h4>
+        <input style="width: 150px;" th:field="*{title}" />
         <br />
-        Description:
-        <input style="width: 30%" th:field="*{body}" type="text"/>
+        <h4>Description:</h4>
+        <input style="width: 400px;" th:field="*{body}"/>
         <br />
         <input type="submit" />
     </form>
