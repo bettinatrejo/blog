@@ -13,22 +13,23 @@
     <h1>Posts</h1>
 
     <!--one to many-->
-        <div th:each="ad : ${posts}">
-            <div th:each="image : ${post.images}">
-                <img  width="50%" th:src="${image.path}"/>
-            </div>
-        </div>
-
+        <div th:each="post : ${posts}">
+            <!--<div th:each="image : ${post.images}">-->
+                <!--<img  width="50%" th:src="${image.path}"/>-->
+            <!--</div>-->
 
         <h3><span th:text="${post.title}"></span></h3>
         <p><span th:text="${post.body}"></span></p>
         <!--one to one-->
-        <p th:text="${post.user.email}"></p>
+        <!--<p th:text="${post.user.email}"></p>-->
+            <!--<button><a href="/posts/{id}">Show</a></button>-->
+        </div>
+
 
 
 </main>
 
-<div th:replace="partials/footer :: footer"></div>
+<!--<div th:replace="partials/footer :: footer"></div>-->
 
 </body>
 </html>

@@ -25,8 +25,6 @@ public class Post {
 
 //    this is for the postdetails.java class that is for details only (need to specify user/post)
 //   one detail at a time
-//    @OneToOne
-//    private PostDetails postDetails;
 
     public Post(String title, String body, User user) {
         this.title = title;
