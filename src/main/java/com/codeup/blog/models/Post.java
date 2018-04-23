@@ -1,10 +1,48 @@
 package com.codeup.blog.models;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="posts")
 public class Post {
 
-    private String title;
-    private String body;
+    @Id
+    @GeneratedValue
+    @Column(columnDefinition = "INT(11) UNSIGNED")
     private long id;
+
+    @Column (nullable = false, length = 150)
+    private String title;
+
+    @Column (columnDefinition = "TEXT", nullable = false)
+    private String body;
+
+    //creates the relationship to users table
+    @ManyToOne
+    private User user;
+
+
+//    this is for the postdetails.java class that is for details only (need to specify user/post)
+//   one detail at a time
+//    @OneToOne
+//    private PostDetails postDetails;
+
+    public Post(String title, String body, User user) {
+        this.title = title;
+        this.body = body;
+        this.user = user;
+    }
+
+    public Post(String title, String body, long id, User user) {
+        this.title = title;
+        this.body = body;
+        this.id = id;
+        this.user = user;
+    }
+
+    public Post() {
+    }
 
     public long getId() {
         return id;
@@ -12,15 +50,6 @@ public class Post {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-
-    public Post(String title, String body) {
-        this.title = title;
-        this.body = body;
-    }
-
-    public Post() {
     }
 
     public String getTitle() {
@@ -39,6 +68,13 @@ public class Post {
         this.body = body;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
 
 }

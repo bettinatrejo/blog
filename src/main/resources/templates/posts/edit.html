@@ -8,15 +8,20 @@
 
 <main class="container">
 
-    <form action="@{/posts/create}" th:method="post" th:object="${Post}">
+    <form th:action="@{/posts/edit}" th:method="post" th:object="${post}">
         Title:
-        <input th:field="*{title}" th:value="${title}"/>
+        <input th:field="*{title}"/>
         <br />
         Description:
-        <input th:field="*{description}" th:value="${description}"/>
+        <input th:field="*{body}"/>
         <br />
-        <input type="hidden" th:field="*{id}" th:value="${id}" />
+        <input type="hidden" th:field="*{id}" />
         <input type="submit" />
+    </form>
+
+    <form th:action="@{/posts/delete}" th:method="post" th:object="${post}">
+        <input type="hidden" th:field="*{id}" />
+        <button id="delete">Delete</button>
     </form>
 
 </main>

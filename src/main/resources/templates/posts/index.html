@@ -12,10 +12,19 @@
 
     <h1>Posts</h1>
 
-    <div th:each="post : ${posts}">
+    <!--one to many-->
+        <div th:each="ad : ${posts}">
+            <div th:each="image : ${post.images}">
+                <img  width="50%" th:src="${image.path}"/>
+            </div>
+        </div>
+
+
         <h3><span th:text="${post.title}"></span></h3>
         <p><span th:text="${post.body}"></span></p>
-    </div>
+        <!--one to one-->
+        <p th:text="${post.user.email}"></p>
+
 
 </main>
 

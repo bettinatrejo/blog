@@ -1,5 +1,8 @@
 USE blog_db;
 
+
+
+TRUNCATE users;
 TRUNCATE dogs;
 TRUNCATE people;
 
