@@ -22,7 +22,7 @@ public class HomeController {
     @GetMapping("/")
     public String welcome()
     {
-        return "index";
+        return "/posts/index";
     }
 
 //    @GetMapping("/home/{name}")
