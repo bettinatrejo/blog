@@ -2,6 +2,7 @@ package com.codeup.blog.models;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="posts")
@@ -13,6 +14,7 @@ public class Post {
     private long id;
 
     @Column (nullable = false, length = 150)
+    @Size(min=1, max=15, message="Post title must be between 1-15 characters long")
     private String title;
 
     @Column (columnDefinition = "TEXT", nullable = false)
