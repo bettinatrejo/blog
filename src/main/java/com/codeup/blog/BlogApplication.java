@@ -16,4 +16,5 @@ public class BlogApplication extends SpringBootServletInitializer {
 		return application.sources(BlogApplication.class);
 	}
 
+
 }
