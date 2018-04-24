@@ -6,7 +6,10 @@ import com.codeup.blog.dao.PostRepository;
 import com.codeup.blog.models.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 public class PostController {
@@ -40,7 +43,11 @@ public class PostController {
 
 
     @PostMapping("/posts/create")
-    public String insert(@ModelAttribute Post newPost) {
+    public String insert(@Valid Post newPost, Errors errors, Model model) {
+        if (errors.hasErrors()) {
+            model.addAttribute("post", newPost);
+            return "post/create";
+        }
         postDao.save(newPost);
         return "redirect:/posts";
     }
