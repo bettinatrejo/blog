@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Home Page</title>
-</head>
+<head th:replace="partials/header :: header('B\'s Blog')"></head>
 <body>
 
-<h1>This is the home Page!</h1>
+<div th:replace="partials/navbar :: navbar"></div>
+
+<main class="container">
+<h1>Welcome, let's blog!</h1>
 <br/>
 
-<div th:if="${name}">
-    <h3>Welcome, <span th:text="${name}"></span></h3>
-</div>
+<!--<div th:if="${name}">-->
+    <!--<h3>Welcome, <span th:text="${name}"></span></h3>-->
+<!--</div>-->
 
 
-<div th:if="${users}">
-    <div th:each="user : ${users}">
-        <h2></h2>
-        <h3>Welcome <span th:text="${user}"></span></h3>
-    </div>
-</div>
+<!--<div th:if="${users}">-->
+    <!--<div th:each="user : ${users}">-->
+        <!--<h2></h2>-->
+        <!--<h3>Welcome <span th:text="${user}"></span></h3>-->
+    <!--</div>-->
+<!--</div>-->
 
 
-<div th:include="partials/footer :: footer"></div>
+<!--<div th:include="partials/footer :: footer"></div>-->
 
-<div th:replace="partials/footer :: footer"></div>
+<!--<div th:replace="partials/footer :: footer"></div>-->
+</main>
 
 
 

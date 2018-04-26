@@ -4,6 +4,8 @@ package com.codeup.blog.controllers;
 import com.codeup.blog.Services.PostService;
 import com.codeup.blog.dao.PostRepository;
 import com.codeup.blog.models.Post;
+import com.codeup.blog.models.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -32,22 +34,24 @@ public class PostController {
     @GetMapping("/posts/{id}")
     public String show(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.findOne(id));
-        return "/posts/show";
+        return "posts/show";
     }
 
     @GetMapping("/posts/create")
     public String create(Model viewModel) {
         viewModel.addAttribute("newPost", new Post());
-        return "/posts/create";
+        return "posts/create";
     }
 
 
     @PostMapping("/posts/create")
     public String insert(@Valid Post newPost, Errors errors, Model model) {
         if (errors.hasErrors()) {
-            model.addAttribute("post", newPost);
+            model.addAttribute("newPost", newPost);
             return "post/create";
         }
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        newPost.setUser((loggedInUser));
         postDao.save(newPost);
         return "redirect:/posts";
     }
@@ -55,19 +59,22 @@ public class PostController {
     @GetMapping("/posts/{id}/edit")
     public String edit(@PathVariable long id, Model viewModel) {
         viewModel.addAttribute("post", postDao.findOne(id));
-        return"/posts/edit";
+        return"posts/edit";
     }
 
-    @PostMapping("/posts/edit")
-    public String handleEdit(@ModelAttribute Post post){
-        postDao.save(post);
+    @PostMapping("/posts/{id}/edit")
+    public String update(@PathVariable long id, @ModelAttribute Post post){
+        Post originalPost = postDao.findOne(id);
+        originalPost.setTitle(post.getTitle());
+        originalPost.setBody(post.getBody());
+        postDao.save(originalPost);
         return "redirect:/posts";
     }
 
 
-    @PostMapping("/posts/delete")
-    public String delete(@ModelAttribute Post post){
-        postDao.delete(post);
+    @PostMapping("/posts/{id}/delete")
+    public String delete(@PathVariable long id){
+        postDao.delete(id);
         return "redirect:/posts";
     }
 

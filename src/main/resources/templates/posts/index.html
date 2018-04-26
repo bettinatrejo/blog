@@ -16,16 +16,21 @@
 
 
     <!--one to many-->
-        <div th:each="post : ${posts}">
-            <!--<div th:each="image : ${post.images}">-->
-                <!--<img  width="50%" th:src="${image.path}"/>-->
-            <!--</div>-->
 
-        <h3><span th:text="${post.title}"></span></h3>
-        <p><span th:text="${post.body}"></span></p>
-        <!--one to one-->
-        <!--<p th:text="${post.user.email}"></p>-->
-            <!--<button><a href="/posts/{id}">Show</a></button>-->
+    <div th:each="post : ${posts}">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">
+                <a th:href="@{'/posts/' + ${post.id}}">
+                    <span th:text="${post.title}"></span>
+                </a>
+                    <p>Created by: <span th:text="${post.user.email}"></span></p>
+            </h5>
+
+
+        </div>
+    </div>
+
         </div>
 
 

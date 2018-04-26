@@ -7,11 +7,24 @@
 
 <div th:replace="partials/navbar :: navbar"></div>
 
-<h1>Post</h1>
+<main class="container">
+    <h1>Post</h1>
 
-<h3><span th:text="${post.title}"></span></h3>
-<p><span th:text="${post.body}"></span></p>
-<p><span th:text="${post.user.email}"></span></p>
+    <!--<div th:each="post : ${posts}">-->
+    <h3><span th:text="${post.title}"></span></h3>
+    <p><span th:text="${post.body}"></span></p>
+    <p>Email: <span th:text="${post.user.email}"></span></p>
+
+    <div th:if="${#authentication.principal.id == post.user.id}">
+        <form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:method="GET">
+            <button class="btn btn-large btn-success">Edit Post</button>
+        </form>
+        <form th:action="@{'/posts/' + ${post.id} + '/delete'}" th:method="POST">
+            <button class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+    <!--</div>-->
+</main>
 
 </body>
 </html>

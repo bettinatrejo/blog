@@ -14,7 +14,7 @@ public class Post {
     private long id;
 
     @Column (nullable = false, length = 150)
-    @Size(min=1, max=15, message="Post title must be between 1-15 characters long")
+    @Size(min=1, max=25, message="Post title must be between 1-25 characters long")
     private String title;
 
     @Column (columnDefinition = "TEXT", nullable = false)
